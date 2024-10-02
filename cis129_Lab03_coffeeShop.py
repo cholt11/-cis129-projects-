@@ -12,7 +12,7 @@ TAX_RATE = 0.06
 # User input for coffee and muffin orders 
 print("**********************************")
 print("My Coffee and Muffin Shop") 
-coffee = int(input("Number of coffees ordered?"))
+coffees = int(input("Number of coffees ordered?"))
 muffins = int(input("Number of muffins ordered?"))
 print("***********************************")
 
