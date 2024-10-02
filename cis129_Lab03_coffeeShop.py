@@ -12,8 +12,8 @@ TAX_RATE = 0.06
 # User input for coffee and muffin orders 
 print("**********************************")
 print("My Coffee and Muffin Shop") 
-coffee = int(input("Number of coffees ordered?"))
-muffins = int(input("Number of muffins ordered?"))
+coffee = int(input("Number of coffee ordered?"))
+muffins = int(input("Number of muffin ordered?"))
 print("***********************************")
 
 #Calculate the sales tax as well as the total and subtotal 
