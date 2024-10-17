@@ -1,0 +1,32 @@
+# Lab 5 The Bottle Return Program
+
+# Step 1: Declare variables
+def main():
+    total_bottles = 0
+    counter = 1
+    today_bottles = 0
+    total_payout = 0.0
+    keep_going = "y"
+
+    # Step 2: Loop to run program again
+    while keep_going.lower() == "y":
+        total_bottles = 0  # reset total bottles for each new week
+
+        # Step 3: Code to collect data for 7 days
+        for counter in range(1, 8):  # 7 days (1 to 7)
+            today_bottles = int(input(f"Enter number of bottles returned for day #{counter}: "))
+            total_bottles += today_bottles  # accumulate total bottles
+
+        # Step 4: Code to calculate total payout
+        total_payout = total_bottles * 0.10
+
+        # Step 5: Print results
+        print(f"The total number of bottles collected is {total_bottles}")
+        print(f"The total paid out is $ {total_payout:.2f}")
+
+        # Ask if the user wants to run the program again
+        keep_going = input("Do you want to enter another week’s worth of data? (Enter y or n): ")
+
+# Run the main function
+if __name__ == "__main__":
+    main()
