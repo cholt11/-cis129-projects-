@@ -1,0 +1,75 @@
+# Open a file for writing
+with open("grades.txt", "w") as grades_file:
+    print("Enter grades one by one. Type 'done' when you are finished.\n")
+
+    while True:
+        grade = input("Enter a grade: ")
+        
+        # Check if user wants to stop entering grades
+        if grade.lower() == "done":
+            print("Grades have been written to grades.txt")
+            break
+
+        # Validate the input to ensure it's a valid grade
+        if grade.isdigit() and 0 <= int(grade) <= 100:
+            grades_file.write(grade + "\n")
+        else:
+            print("Invalid grade. Please enter a number between 0 and 100.")
+# Open the file for reading
+try:
+    with open("grades.txt", "r") as grades_file:
+        # Read all grades into a list
+        grades = [int(line.strip()) for line in grades_file if line.strip().isdigit()]
+        
+        # Display individual grades
+        print("Grades:")
+        for grade in grades:
+            print(grade)
+
+        # Calculate total, count, and average
+        total = sum(grades)
+        count = len(grades)
+        average = total / count if count > 0 else 0
+
+        # Display results
+        print(f"\nTotal: {total}")
+        print(f"Count: {count}")
+        print(f"Average: {average:.2f}")
+except FileNotFoundError:
+    print("The file 'grades.txt' does not exist. Please create it by running the previous exercise.")
+except ValueError:
+    print("Error reading grades. Ensure the file contains only valid numbers.")
+import csv
+
+# Open the CSV file for writing
+with open("grades.csv", "w", newline="") as csvfile:
+    # Create a writer object
+    writer = csv.writer(csvfile)
+    
+    # Write the header row
+    writer.writerow(["First Name", "Last Name", "Exam 1", "Exam 2", "Exam 3"])
+    
+    print("Enter student records. Type 'done' as the first name to stop.\n")
+    
+    while True:
+        # Get student details
+        first_name = input("Enter first name (or 'done' to finish): ").strip()
+        if first_name.lower() == "done":
+            print("Student records have been written to grades.csv")
+            break
+        
+        last_name = input("Enter last name: ").strip()
+        try:
+            exam1 = int(input("Enter grade for Exam 1: ").strip())
+            exam2 = int(input("Enter grade for Exam 2: ").strip())
+            exam3 = int(input("Enter grade for Exam 3: ").strip())
+        except ValueError:
+            print("Invalid input. Please enter numeric grades.")
+            continue
+        
+        # Validate grades
+        if all(0 <= grade <= 100 for grade in (exam1, exam2, exam3)):
+            # Write the record to the file
+            writer.writerow([first_name, last_name, exam1, exam2, exam3])
+        else:
+            print("Grades must be between 0 and 100. Please try again.")
